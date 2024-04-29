@@ -36,8 +36,8 @@ def fill_tables():
     for book in range(1,4):
         for i in range(1,6):
             new_book = Book(bookname=f'Название книги {book}', publicyear=f'год издания {book}',
-                            copies = 1+book, id_author =i)
-        db.session.add(new_book)
+                            copies = 1+book, id_author=i)
+            db.session.add(new_book)
     db.session.commit()
 
 @app.route('/books/')
@@ -45,6 +45,7 @@ def get_books():
     books = Book.query.all()
     context = {'books':books}
     return render_template('books.html',**context)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
